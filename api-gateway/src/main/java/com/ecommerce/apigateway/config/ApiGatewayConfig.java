@@ -13,9 +13,9 @@ public class ApiGatewayConfig {
     public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route("user-service", r -> r.path("/users/**")
-                        .uri("https://33915c38-2f9e-45da-8145-d6f9de2fee81.mock.pstmn.io/"))
+                        .uri("lb://user-service"))
                 .route("catalog-service", r -> r.path("/catalog/**")
-                        .uri("https://33915c38-2f9e-45da-8145-d6f9de2fee81.mock.pstmn.io/"))
+                        .uri("lb://catalog-service"))
                 .build();
     }
 }
