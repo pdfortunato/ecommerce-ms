@@ -1,0 +1,26 @@
+server:
+  port: 8080  # Porta dell'API Gateway
+
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: https://33915c38-2f9e-45da-8145-d6f9de2fee81.mock.pstmn.io/
+          predicates:
+            - Path=/users/**
+        - id: catalog-service
+          uri: https://33915c38-2f9e-45da-8145-d6f9de2fee81.mock.pstmn.io/
+          predicates:
+            - Path=/catalog/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: false
+    fetch-registry: false
