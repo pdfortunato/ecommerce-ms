@@ -10,11 +10,11 @@ spring:
     gateway:
       routes:
         - id: user-service
-          uri: https://33915c38-2f9e-45da-8145-d6f9de2fee81.mock.pstmn.io/
+          uri: lb://user-service
           predicates:
             - Path=/users/**
         - id: catalog-service
-          uri: https://33915c38-2f9e-45da-8145-d6f9de2fee81.mock.pstmn.io/
+          uri: lb://catalog-service
           predicates:
             - Path=/catalog/**
 
